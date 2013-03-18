@@ -1,4 +1,4 @@
-PharmaSave
+PharmaSave Heroku
 
 Fields:
     first_name = models.CharField(max_length=200)
