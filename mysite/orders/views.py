@@ -42,7 +42,7 @@ def choose_location(request):
     auth_token = "423fb88dee17931cdb345671ed665069"
     client = TwilioRestClient(account_sid, auth_token)
     
-    order=Order.objects.get(pk=100)
+    order=Order.objects.get(pk=1)
 
     ids=request.GET.lists()[0][1]
     results=[]
