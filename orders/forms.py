@@ -1,4 +1,4 @@
-from django import forms
+efrom django import forms
 from orders.models import Order
 
 class OrderCreateForm(forms.Form):
@@ -7,7 +7,7 @@ class OrderCreateForm(forms.Form):
     
     class Meta:
         model = Order
-        fields = ("fullname", "email", "order date", "date of birth", "phone number", "medication", "prescriber name", "prescriber phone number", "paper")
+        fields = ("fullname", "email", "order date", "date of birth", "phone number", "medication", "prescriber name", "prescriber phone number")
 
     def save(self, commit=True):
         order = super(OrderCreateForm, self).save(commit=False)

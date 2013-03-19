@@ -12,7 +12,7 @@ class Order(models.Model):
     medication = models.CharField(max_length=200)
     prescriber_name= models.CharField(max_length=200)
     prescriber_phone_number= models.CharField(max_length=12)
-    paper=models.BooleanField('Paper prescription')
+    #paper=models.BooleanField('Paper prescription')
     zipcode=models.CharField(max_length=200)
 
 class OrderForm(ModelForm):
@@ -20,7 +20,7 @@ class OrderForm(ModelForm):
     
     class Meta:
         model = Order
-        fields = ("fullname", "email", "order_date", "birth_date", "phone_number", "medication", "prescriber_name", "prescriber_phone_number", "zipcode", "paper")
+        fields = ("fullname", "email", "order_date", "birth_date", "phone_number", "medication", "prescriber_name", "prescriber_phone_number", "zipcode")
         
     def save(self, commit=True):
         order = super(OrderForm, self).save(commit=False)
