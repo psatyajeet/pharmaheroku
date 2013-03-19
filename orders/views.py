@@ -23,6 +23,8 @@ def new_prescription(request):
         if form.is_valid():
             order = form.save()
             (places, lat, lng)=show_nearby(order)
+            request.session['key'] = order.pk
+
             return render_to_response('orders/choose.html', {'form': form, 'places': places, 'lat': lat, 'lng': lng})
         else:
             return render_to_response('orders/new.html', {
@@ -42,7 +44,7 @@ def choose_location(request):
     auth_token = "423fb88dee17931cdb345671ed665069"
     client = TwilioRestClient(account_sid, auth_token)
     
-    order=Order.objects.get(pk=1)
+    order=Order.objects.get(pk=request.session['key'])
 
     ids=request.GET.lists()[0][1]
     results=[]
@@ -58,11 +60,11 @@ def show_nearby(order):
     key = 'AIzaSyBOebFrowSFSnB7V4zeNGagd9hTG4ydq8M'
     gmaps = GoogleMaps(key)
     address = order.zipcode
-    lat, lng= (40.337904,-74.587335)
+    #lat, lng= (40.337904,-74.587335)
     lat, lng=Geocoder.geocode(address)[0].coordinates
     #lat, lng = gmaps.address_to_latlng(address)
     
-    radius = '5000'
+    radius = '1000'
     
     URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + str(lat) + ',' + str(lng) + '&radius=' + radius + '&types=pharmacy&sensor=false&key=' + key
 
