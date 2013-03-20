@@ -8,11 +8,12 @@
   {% for field in form %}
       <div class="field-wrapper span6 offset3">
         <div class="label-wrapper">
-          {{ field.label_tag }}
+          {{ field.label_tag }} 
         </div>
         <div class="value-wrapper">
           {{ field }}
           {{ field.errors }}
+          {{ field.help_text }}
         </div>
       </div>
   {% endfor %}

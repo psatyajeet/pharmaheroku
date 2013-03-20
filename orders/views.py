@@ -64,7 +64,7 @@ def show_nearby(order):
     lat, lng=Geocoder.geocode(address)[0].coordinates
     #lat, lng = gmaps.address_to_latlng(address)
     
-    radius = '1000'
+    radius = '5000'
     
     URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + str(lat) + ',' + str(lng) + '&radius=' + radius + '&types=pharmacy&sensor=false&key=' + key
 

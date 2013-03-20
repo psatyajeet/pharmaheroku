@@ -5,8 +5,8 @@ from django import forms
 class Order(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    order_date = models.CharField(max_length=200)
-    birth_date = models.CharField(max_length=200)
+    order_date = models.CharField(max_length=200, help_text="Format: mm/dd/yyyy")
+    birth_date = models.CharField(max_length=200, help_text="Format: mm/dd/yyyy")
     email = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=12)
     medication = models.CharField(max_length=200)
