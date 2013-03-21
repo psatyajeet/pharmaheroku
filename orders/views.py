@@ -85,7 +85,7 @@ def make_call(number, order):
     # Make the call
     number="+16099370216"
     firstname=order.first_name
-    myurl="http://twimlets.com/menu?Message=This%20is%20a%20call%20from%20pharma%20save.%20The%20customers%20last%20name%20is%20"+order.last_name+"%20and%20the%20first%20name%20is%20"+order.first_name+".%20The%20order%20date%20is%20April%202nd%202013.%20The%20customer's%20phone%20number%20is%20"
+    myurl="http://twimlets.com/menu?Message=This%20is%20a%20call%20from%20pharma%20save.%20The%20customers%20last%20name%20is%20"+order.last_name+"%20and%20the%20first%20name%20is%20"+order.first_name+".%20The%20order%20date%20is%20"+order.order_date+".%20The%20customer's%20phone%20number%20is%20"
     for letter in order.phone_number:
         myurl+=letter+"%20"
     myurl+="%20.Their%20medication%20is%20"+order.medication+".%20Their%20prescriber's%20name%20is%20Shiwei%20Tong.%20The%20prescriber's%20phone%20number%20is%20i"+order.prescriber_phone_number+".%20Press%201%20to%20repeat%20the%20order.%20Press%202%20to%20confirm%20the%20order.%20&Options%5B1%5D=%2FAC4f13c39e2e5b0cf1fd1017be8fd944a7%2Ffirsttry&Options%5B2%5D=%2FAC4f13c39e2e5b0cf1fd1017be8fd944a7%2Fconfirm&"
