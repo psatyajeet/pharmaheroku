@@ -1,20 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<form action="." method="post">
+	<SCRIPT LANGUAGE="JavaScript" SRC="/static/CalendarPopup.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript">
+	var cal = new CalendarPopup();
+	</SCRIPT>
+	
+<form name= 'new' action="." method="post">
   {% csrf_token %}
   {{ form.non_field_errors }}
   {% for field in form %}
       <div class="field-wrapper span6 offset3">
+        {% if field.label == 'Order date' %}
         <div class="label-wrapper">
-          {{ field.label_tag }} 
+          {{ field.label }} 
+                  <A HREF="#"
+   onClick="cal.select(document.forms['new'].order_date,'anchor1','MM/dd/yyyy'); return false;"
+   NAME="anchor1" ID="anchor1">select</A>
+        </div>
+        <div class="value-wrapper">
+          {{ field }}
+          {{ field.errors }}
+        </div>
+        {% elif field.label == 'Birth date' %}
+        <div class="label-wrapper">
+          {{ field.label }} 
+                  <A HREF="#"
+   onClick="cal.select(document.forms['new'].birth_date,'anchor1','MM/dd/yyyy'); return false;"
+   NAME="anchor1" ID="anchor1">select</A>
+        </div>
+        <div class="value-wrapper">
+          {{ field }}
+          {{ field.errors }}
+        </div>
+        
+        {% else %}
+        <div class="label-wrapper">
+          {{ field.label }}  12312
         </div>
         <div class="value-wrapper">
           {{ field }}
           {{ field.errors }}
           {{ field.help_text }}
         </div>
+        {% endif %}
       </div>
   {% endfor %}
   
